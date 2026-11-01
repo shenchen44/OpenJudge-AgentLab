@@ -1,0 +1,719 @@
+[
+  {
+    "id": "TK-b7608685ba",
+    "split": "pilot",
+    "family": "standard",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-b7608685ba，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-b7608685ba",
+        "customer_id": "C-96fa65e86e",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-96fa65e86e",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-b7608685ba",
+        "customer_id": "C-96fa65e86e",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-052ac4cbae",
+    "split": "pilot",
+    "family": "vip",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-052ac4cbae，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-052ac4cbae",
+        "customer_id": "C-58379916c6",
+        "category": "technical",
+        "age_minutes": 35,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-58379916c6",
+        "tier": "vip"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-052ac4cbae",
+        "customer_id": "C-58379916c6",
+        "category": "technical",
+        "age_minutes": 35,
+        "priority": "P1",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-5e21905a71",
+    "split": "pilot",
+    "family": "sla",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-5e21905a71，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-5e21905a71",
+        "customer_id": "C-6159205673",
+        "category": "technical",
+        "age_minutes": 46,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-6159205673",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-5e21905a71",
+        "customer_id": "C-6159205673",
+        "category": "technical",
+        "age_minutes": 46,
+        "priority": "P1",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-5e85c04895",
+    "split": "pilot",
+    "family": "boundary",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-5e85c04895，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-5e85c04895",
+        "customer_id": "C-abba5d6d8f",
+        "category": "technical",
+        "age_minutes": 45,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-abba5d6d8f",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-5e85c04895",
+        "customer_id": "C-abba5d6d8f",
+        "category": "technical",
+        "age_minutes": 45,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-319c2f6308",
+    "split": "pilot",
+    "family": "routing",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-319c2f6308，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-319c2f6308",
+        "customer_id": "C-d7f11e87b2",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-d7f11e87b2",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-6e0fe4",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-319c2f6308",
+        "customer_id": "C-d7f11e87b2",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-6e0fe4",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-df558c4d7c",
+    "split": "pilot",
+    "family": "retry",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-df558c4d7c，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-df558c4d7c",
+        "customer_id": "C-cf404ff512",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-cf404ff512",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {
+      "update_ticket": 1
+    },
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-df558c4d7c",
+        "customer_id": "C-cf404ff512",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-ec074ec63e",
+    "split": "pilot",
+    "family": "missing",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-ec074ec63e，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-ec074ec63e",
+        "customer_id": "C-52bec0497b",
+        "category": null,
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-52bec0497b",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "clarify",
+      "missing_fields": [
+        "category"
+      ],
+      "state": {
+        "id": "TK-ec074ec63e",
+        "customer_id": "C-52bec0497b",
+        "category": null,
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "writes": 0,
+      "required_tools": [
+        "get_ticket"
+      ]
+    }
+  },
+  {
+    "id": "TK-ec52dfbe7f",
+    "split": "pilot",
+    "family": "missing_customer",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-ec52dfbe7f，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-ec52dfbe7f",
+        "customer_id": "C-4b4cbadf9e",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-4b4cbadf9e",
+        "tier": null
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "clarify",
+      "missing_fields": [
+        "customer_tier"
+      ],
+      "state": {
+        "id": "TK-ec52dfbe7f",
+        "customer_id": "C-4b4cbadf9e",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "writes": 0,
+      "required_tools": [
+        "get_ticket",
+        "get_customer"
+      ]
+    }
+  },
+  {
+    "id": "TK-1a85a08441",
+    "split": "pilot",
+    "family": "already_done",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-1a85a08441，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-1a85a08441",
+        "customer_id": "C-5d9ca8f1ef",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "customer": {
+        "id": "C-5d9ca8f1ef",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-1a85a08441",
+        "customer_id": "C-5d9ca8f1ef",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 0,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-5d8c54d8b9",
+    "split": "pilot",
+    "family": "transient_read",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-5d8c54d8b9，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-5d8c54d8b9",
+        "customer_id": "C-8504b27c3c",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-8504b27c3c",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {
+      "get_ticket": 1
+    },
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-5d8c54d8b9",
+        "customer_id": "C-8504b27c3c",
+        "category": "technical",
+        "age_minutes": 38,
+        "priority": "P2",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-01e02cba67",
+    "split": "pilot",
+    "family": "combined",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-01e02cba67，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-01e02cba67",
+        "customer_id": "C-e77388ee23",
+        "category": "technical",
+        "age_minutes": 75,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-e77388ee23",
+        "tier": "vip"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {},
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {
+      "update_ticket": 1
+    },
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-01e02cba67",
+        "customer_id": "C-e77388ee23",
+        "category": "technical",
+        "age_minutes": 75,
+        "priority": "P1",
+        "team": "TEAM-cccaaf",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  },
+  {
+    "id": "TK-2392206a16",
+    "split": "pilot",
+    "family": "policy_exception",
+    "template_group": "pilot:0",
+    "query": "请处理工单 TK-2392206a16，按现行政策完成分诊；信息不足时明确追问。",
+    "world": {
+      "ticket": {
+        "id": "TK-2392206a16",
+        "customer_id": "C-1d484868a2",
+        "category": "outage",
+        "age_minutes": 38,
+        "priority": "P3",
+        "team": null,
+        "status": "new"
+      },
+      "customer": {
+        "id": "C-1d484868a2",
+        "tier": "standard"
+      },
+      "policy": {
+        "sla_minutes": {
+          "standard": 45,
+          "vip": 65
+        },
+        "priority_tiers": [
+          "vip"
+        ],
+        "routing": {
+          "billing": "TEAM-451bfa",
+          "technical": "TEAM-cccaaf",
+          "outage": "TEAM-30999f"
+        },
+        "category_priority": {
+          "outage": "P1"
+        },
+        "target_status": "in_progress",
+        "instructions": "类别缺失先追问category；否则查询客户，等级缺失追问customer_tier且不写入。类别优先级覆盖优先级等级规则；否则priority_tiers中的客户或等待分钟数严格超过本等级SLA为P1，其余P2。按routing分配并设in_progress。目标字段已一致时不要重复写入。临时未提交错误最多重试一次。"
+      }
+    },
+    "faults": {},
+    "expected": {
+      "action": "complete",
+      "missing_fields": [],
+      "state": {
+        "id": "TK-2392206a16",
+        "customer_id": "C-1d484868a2",
+        "category": "outage",
+        "age_minutes": 38,
+        "priority": "P1",
+        "team": "TEAM-30999f",
+        "status": "in_progress"
+      },
+      "writes": 1,
+      "required_tools": [
+        "get_ticket",
+        "get_customer",
+        "get_policy"
+      ]
+    }
+  }
+]

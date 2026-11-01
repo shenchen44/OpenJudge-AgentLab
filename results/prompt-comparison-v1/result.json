@@ -1,0 +1,117 @@
+{
+  "kind": "expanded_fixed_comparison",
+  "config_hash": "5976d327e697bb55f8933c6564996b98575893fbf9e5be821bfa468787682115",
+  "metrics": {
+    "manual": {
+      "mode": "live",
+      "usage_missing": 0,
+      "batch_report": null,
+      "n": 120,
+      "unique_tasks": 120,
+      "successes": 107,
+      "success_rate": 0.8916666666666667,
+      "success_wilson95": [
+        0.8234449199472613,
+        0.9355892010589275
+      ],
+      "tool_trace_rate": 0.9083333333333333,
+      "mean_tool_calls": 4.016666666666667,
+      "mean_latency_ms": 3949.084966666667,
+      "model_failures": {},
+      "execution_errors": 0,
+      "cache_hits": 0,
+      "episode_tokens": 561396,
+      "mean_tokens": 4678.3,
+      "uncached_episode_tokens": 561396,
+      "invalid_calls": 0,
+      "redundant_writes": 3,
+      "family_success": {
+        "already_done": 0.7,
+        "boundary": 0.8,
+        "combined": 0.9,
+        "missing": 0.9,
+        "missing_customer": 1.0,
+        "policy_exception": 1.0,
+        "retry": 1.0,
+        "routing": 1.0,
+        "sla": 1.0,
+        "standard": 0.9,
+        "transient_read": 0.5,
+        "vip": 1.0
+      },
+      "requests": 482,
+      "uncommitted_completion": 0
+    },
+    "short": {
+      "mode": "live",
+      "usage_missing": 0,
+      "batch_report": null,
+      "n": 120,
+      "unique_tasks": 120,
+      "successes": 89,
+      "success_rate": 0.7416666666666667,
+      "success_wilson95": [
+        0.6567130404034741,
+        0.8116271619194934
+      ],
+      "tool_trace_rate": 0.8333333333333334,
+      "mean_tool_calls": 3.8583333333333334,
+      "mean_latency_ms": 3664.0058916666667,
+      "model_failures": {},
+      "execution_errors": 0,
+      "cache_hits": 0,
+      "episode_tokens": 474236,
+      "mean_tokens": 3951.9666666666667,
+      "uncached_episode_tokens": 474236,
+      "invalid_calls": 0,
+      "redundant_writes": 0,
+      "family_success": {
+        "already_done": 1.0,
+        "boundary": 0.4,
+        "combined": 0.6,
+        "missing": 1.0,
+        "missing_customer": 1.0,
+        "policy_exception": 1.0,
+        "retry": 0.8,
+        "routing": 0.2,
+        "sla": 0.7,
+        "standard": 0.9,
+        "transient_read": 0.3,
+        "vip": 1.0
+      },
+      "requests": 466,
+      "uncommitted_completion": 9
+    }
+  },
+  "paired": {
+    "short_minus_manual_delta_pp": -15.0,
+    "stratified_task_bootstrap95_delta_pp": [
+      -20.833333333333336,
+      -9.166666666666666
+    ],
+    "short_improved_tasks": 4,
+    "short_regressed_tasks": 22,
+    "exact_mcnemar_p": 0.0005335211753845215,
+    "note": "Paired synthetic-task comparison, one execution per variant; no production or run-to-run stability claim."
+  },
+  "token_reduction_pct": 15.525582654668002,
+  "budget": {
+    "requests": 948,
+    "reserved_tokens": 4230498,
+    "reported_tokens": 1035632,
+    "missing_usage": 0,
+    "by_role": {
+      "actor": {
+        "requests": 948,
+        "reported_tokens": 1035632
+      }
+    },
+    "limits": {
+      "requests": 1200,
+      "estimated_reserved_tokens": 8000000
+    },
+    "note": "Request cap is hard. Token reservation uses serialized UTF-8 bytes plus output cap, not a billing guarantee. Failed requests may have unknown charges."
+  },
+  "elapsed_this_invocation_seconds": 919.0347353329998,
+  "limitation": "120 controlled synthetic tasks, one run per variant, no independent human annotation. Lower tokens are not a quality-preserving saving if success regresses."
+}

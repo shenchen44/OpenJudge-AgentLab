@@ -1,0 +1,23 @@
+{
+  "version": "tickets-v2.0",
+  "synthetic": true,
+  "splits": {
+    "pilot": {
+      "count": 12,
+      "sha256": "3b65f35c2f3898870534dfcd7a13483868fa787379f086145e4e3cc93dde7fd0"
+    },
+    "dev": {
+      "count": 24,
+      "sha256": "afd5c5b60b53880a89104609e2bee7f848a81f09ce60b97cd4a943180d47cbdc"
+    },
+    "validation": {
+      "count": 12,
+      "sha256": "f85175816fa692dab3ff2e1bed126f6c0fcef141364fed3b84deb00d976b2cf7"
+    },
+    "test": {
+      "count": 24,
+      "sha256": "c9575dba19b535837b2329406f762bc98b31d5cfac7153fa1cf29dff5d09c517"
+    }
+  },
+  "limitation": "Controlled mechanisms with held-out compositions/values; not production or unseen-domain evidence"
+}

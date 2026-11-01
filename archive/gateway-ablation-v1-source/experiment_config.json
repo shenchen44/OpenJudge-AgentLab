@@ -1,0 +1,82 @@
+{
+  "kind": "execution_gateway_architecture_ablation",
+  "data": {
+    "version": "tickets-expanded-1",
+    "seed": 2026110202,
+    "synthetic": true,
+    "splits": {
+      "dev": {
+        "count": 24,
+        "sha256": "49924257117182746495940e4d3a10bc2ff0c9dc8eadf1cc895f9a6e68f9850c"
+      },
+      "test": {
+        "count": 120,
+        "sha256": "4d30c015e8a9bf65c9f7f685d3fd6e36e10da2cc017b4ad23eaf1fda9eb8cc73"
+      }
+    },
+    "limitation": "Controlled synthetic business rules. No independent human annotation, real customer logs or unseen-domain generalization."
+  },
+  "prompt": "你是企业工单处理助手。使用工具获取事实及现行政策，完成用户要求；信息不足时明确追问。\n最终只输出合法JSON，格式为{\"action\":\"complete|clarify|failed\",\"message\":\"给用户的说明\",\"missing_fields\":[]}。\nclarify时missing_fields只能包含实际缺失的category或customer_tier，并在message中询问该信息。\n先读工单，类别缺失则询问类别并停止写入；否则查客户，等级缺失则询问等级。\n根据当前政策判断，category_priority覆盖priority_tiers及SLA规则；等待时间严格大于SLA才算违约。\n从政策读取团队，不猜ID。需要的独立只读查询可在一轮中调用；不要重复读取已知信息。\n目标字段已一致则不写入；TEMPORARY_UNAVAILABLE明确未提交时最多重试一次，写入成功才能宣布完成。",
+  "provider": {
+    "model": "deepseek-flash",
+    "endpoint": "https://api.deepseek.com",
+    "request_options": {
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "response_format": {
+        "type": "json_object"
+      }
+    }
+  },
+  "arms": {
+    "plain": {
+      "execution_gate": false,
+      "repair_limit": 0
+    },
+    "guard_only": {
+      "execution_gate": true,
+      "repair_limit": 0
+    },
+    "guard_repair": {
+      "execution_gate": true,
+      "repair_limit": 1
+    }
+  },
+  "gateway_version": "evidence-gateway-1",
+  "max_steps": 8,
+  "max_tool_attempts": 8,
+  "concurrency": 1,
+  "task_timeout": 300,
+  "order": "seed6142 paired task shuffle; six arm-order permutations balanced across 120 tasks",
+  "request_cap": 1800,
+  "source_sha256": {
+    "efficiency.py": "0ac81943a5992c29d431b433fe22148f87fde72268d1ee430151473e916d0229",
+    "coordinator.py": "13c79ab35a881e44fd1533396e247341d97114c94802e3afe9b8dfb1857b232b",
+    "accounting.py": "f46729d8ceb941097d7e94e242e6e042eeea362dd99904282dd02eb29285ebfa",
+    "provider.py": "79b08f2cc3015a5f7760081fc38cecdc4323f52dc11ca4c7fb1ff99feb172c0e",
+    "execution_gateway.py": "57ea7b9584289887a196cafa9cffcb63395c822c91fbb40e84689803ab624fbe",
+    "budget.py": "330079033cf0a90c44568ed11edd02345cff028bfdc1521800c395a985acdf60",
+    "protocol.py": "c0deaca057a33c68d21005d28ba723f0e779a81cff28dfea54a9bca94feccad6",
+    "expanded_benchmark.py": "bc76c01cd0797b86630eb21980225ab72bbce42d634535e5dd0f6de8ee05aec6",
+    "__init__.py": "9800c7dafe71c5e9d4fe5f6c75292ca6fe66e752c0ed1f896a63b512a8ed519d",
+    "graders.py": "abee6bd3d8e268799ccb66b0ebfafe0654ce40583546d89a06cb975d3621c23e",
+    "prompts.py": "77b60ab3619f075fbe653fe82359b1634b32559c72587863c923b0352661d571",
+    "experiment.py": "1c81145c729bb6670e9b097bec45d9802e9009914747fcd5ca05d8baf607322f",
+    "cli.py": "a6a770f8d1a8c78690cab3d9ce3b9894653f70f5a7b9fe8239343bdffb975325",
+    "gateway_benchmark.py": "b66c089cf403173be32a4f583eb09404b37556213703342c6d98f2d1bf359d76",
+    "locking.py": "d9de662a6c36cf20ecd658f3849620ba3adf33e3e10c767e0dea9e4f6fc5ebee",
+    "storage.py": "23453e034e7f0981578bf63f2283d252313abf1394630eac88aa9dbf12ac448b",
+    "agent.py": "3c51976577023f8527da71513103490214ae326b85eb6b4bfde78b350ce86954",
+    "environment.py": "e4b244344f72681c08b667b446ab8840d5212caa54986cd911bf829a4c7f9c1b",
+    "local_config.py": "dcdf4a54cb58ed6589e5e23670f4a57f821c1ceb394927553298ed1361c63440",
+    "report.py": "3b321ba9a4ae1aacf837fd32c3f197954ed04af7b1ea450912402e9d2d83736f",
+    "data.py": "f8034298d3179c012709ab501bad1427e044b417041f7c9debe53b8c32bd3635",
+    "calibration.py": "87a1d2a8649493e31341dc31d894e6cb3b91bb57eab154cb385d8ce7972bdb92"
+  },
+  "primary": "guard_repair vs plain strict success, paired stratified bootstrap5000 and exact McNemar",
+  "secondary": "guard_only ablation descriptive; audit all blocked/skipped actions, no silent erasure of bad proposals",
+  "note": "Runtime uses observed tool data only; labels used exclusively by external graders. Tool attempts and all paid retries share hard caps."
+}

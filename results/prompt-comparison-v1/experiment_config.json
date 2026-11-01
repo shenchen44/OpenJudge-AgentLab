@@ -1,0 +1,91 @@
+{
+  "benchmark": {
+    "version": "tickets-expanded-1",
+    "seed": 2026110201,
+    "synthetic": true,
+    "splits": {
+      "dev": {
+        "count": 24,
+        "sha256": "e498a988e8033df6af9e7b2a0cb3f971c4de120a42e24dd29db7bddf9865bacd"
+      },
+      "test": {
+        "count": 120,
+        "sha256": "65b286a97f8425eb940e3d097c9f8db48505983bf4f8843c2c0e58357b1242a8"
+      }
+    },
+    "limitation": "Controlled synthetic business rules. No independent human annotation, real customer logs or unseen-domain generalization."
+  },
+  "provider": {
+    "model": "deepseek-flash",
+    "endpoint": "https://api.deepseek.com",
+    "request_options": {
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "response_format": {
+        "type": "json_object"
+      }
+    }
+  },
+  "prompts": {
+    "manual": "你是企业工单处理助手。使用工具获取事实及现行政策，完成用户要求；信息不足时明确追问。\n最终只输出合法JSON，格式为{\"action\":\"complete|clarify|failed\",\"message\":\"给用户的说明\",\"missing_fields\":[]}。\nclarify时missing_fields只能包含实际缺失的category或customer_tier，并在message中询问该信息。\n先读工单，类别缺失则询问类别并停止写入；否则查客户，等级缺失则询问等级。\n根据当前政策判断，category_priority覆盖priority_tiers及SLA规则；等待时间严格大于SLA才算违约。\n从政策读取团队，不猜ID。需要的独立只读查询可在一轮中调用；不要重复读取已知信息。\n目标字段已一致则不写入；TEMPORARY_UNAVAILABLE明确未提交时最多重试一次，写入成功才能宣布完成。",
+    "short": "按现行政策分诊工单。先查工单，缺类别立即追问；否则查客户和政策，缺等级立即追问。复用已知信息，目标已满足则不写入、不复查。仅临时未提交错误重试一次。\n只输出JSON：{\"action\":\"complete|clarify|failed\",\"message\":\"一句话结果或追问\",\"missing_fields\":[]}。缺失字段仅用category、customer_tier。"
+  },
+  "source_sha256": {
+    "efficiency.py": "0ac81943a5992c29d431b433fe22148f87fde72268d1ee430151473e916d0229",
+    "coordinator.py": "13c79ab35a881e44fd1533396e247341d97114c94802e3afe9b8dfb1857b232b",
+    "accounting.py": "f46729d8ceb941097d7e94e242e6e042eeea362dd99904282dd02eb29285ebfa",
+    "provider.py": "79b08f2cc3015a5f7760081fc38cecdc4323f52dc11ca4c7fb1ff99feb172c0e",
+    "budget.py": "330079033cf0a90c44568ed11edd02345cff028bfdc1521800c395a985acdf60",
+    "protocol.py": "c0deaca057a33c68d21005d28ba723f0e779a81cff28dfea54a9bca94feccad6",
+    "expanded_benchmark.py": "f69f5a8af1e93cdf1e5c44c4575f8120557504eb56d69b43a99920d715a3381c",
+    "__init__.py": "9800c7dafe71c5e9d4fe5f6c75292ca6fe66e752c0ed1f896a63b512a8ed519d",
+    "graders.py": "abee6bd3d8e268799ccb66b0ebfafe0654ce40583546d89a06cb975d3621c23e",
+    "prompts.py": "77b60ab3619f075fbe653fe82359b1634b32559c72587863c923b0352661d571",
+    "experiment.py": "066ab87d21efd76f925f2b2d945fcc1afc85f5151201067f3a0b39e204f0febe",
+    "cli.py": "a6a770f8d1a8c78690cab3d9ce3b9894653f70f5a7b9fe8239343bdffb975325",
+    "locking.py": "d9de662a6c36cf20ecd658f3849620ba3adf33e3e10c767e0dea9e4f6fc5ebee",
+    "storage.py": "23453e034e7f0981578bf63f2283d252313abf1394630eac88aa9dbf12ac448b",
+    "agent.py": "831da50b30056cd1855b592f7695d4f3d4831dbe7e76fb7fab40172e100a0846",
+    "environment.py": "e4b244344f72681c08b667b446ab8840d5212caa54986cd911bf829a4c7f9c1b",
+    "local_config.py": "dcdf4a54cb58ed6589e5e23670f4a57f821c1ceb394927553298ed1361c63440",
+    "report.py": "3b321ba9a4ae1aacf837fd32c3f197954ed04af7b1ea450912402e9d2d83736f",
+    "data.py": "f8034298d3179c012709ab501bad1427e044b417041f7c9debe53b8c32bd3635",
+    "calibration.py": "87a1d2a8649493e31341dc31d894e6cb3b91bb57eab154cb385d8ce7972bdb92"
+  },
+  "max_steps": 8,
+  "concurrency": 1,
+  "task_timeout": 300,
+  "order": "seed5521 shuffled task pairs, alternating first variant",
+  "plan": {
+    "unique_test_tasks": 120,
+    "families": 12,
+    "tasks_per_family": 10,
+    "variants": [
+      "manual",
+      "short"
+    ],
+    "new_task_executions": 240,
+    "repeats": 1,
+    "request_estimate": {
+      "low": 900,
+      "high": 1100
+    },
+    "request_cap": 1200,
+    "estimated_reserved_token_cap": 8000000,
+    "worst_case_http_attempts": 3840,
+    "note": "Estimate is not a guarantee or currency budget. Stop at cap; incomplete runs cannot be reported as a full comparison."
+  },
+  "primary": "strict end-to-end task success; per-family macro equals balanced task mean",
+  "secondary": [
+    "tokens_all_tasks_including_failures",
+    "requests",
+    "latency",
+    "format_errors",
+    "uncommitted_completion",
+    "redundant_writes"
+  ],
+  "analysis": "stratified paired task bootstrap 5000; exact McNemar; no optional stopping or post-test prompt revision"
+}

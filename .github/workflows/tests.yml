@@ -1,0 +1,32 @@
+name: Offline tests and published evidence
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install pinned upstream and project dependencies
+        run: bash scripts/setup.sh
+      - name: Offline software tests
+        run: .venv/bin/python -m pytest -q
+      - name: Regrade and replay published experiment evidence
+        run: .venv/bin/python scripts/verify_published_results.py

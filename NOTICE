@@ -1,0 +1,15 @@
+OpenJudge-AgentLab uses OpenJudge through its public grading interfaces.
+Repository: https://github.com/agentscope-ai/OpenJudge
+Pinned source commit: c2fdc38314cd971b03d4d9333cd2c9f24d85c27f
+Upstream license: Apache License, Version 2.0.
+The setup script fetches an unmodified upstream checkout into ignored upstream/;
+it is not vendored as part of this repository. See UPSTREAM.json.
+
+The agentlab/ package, synthetic ticket fixtures, execution gateway,
+experiment orchestration, tests, scripts and project documentation are
+project-specific extensions. They are not official OpenJudge features
+and are not presented as an upstream contribution. The root LICENSE
+applies to these extensions as well.
+
+Task lifecycle and isolation designs reference deepseek-ai/dsh-superagent-prototype.
+No DSH runtime or source code is included or reproduced.

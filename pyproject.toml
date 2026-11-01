@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openjudge-agentlab"
+version = "0.3.0"
+description = "Evidence-based execution gateways, bounded repair and OpenJudge evaluation for tool-using agents"
+requires-python = ">=3.11"
+dependencies = ["py-openjudge>=0.2,<0.3", "openai>=2.8,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+agentlab = "agentlab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agentlab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

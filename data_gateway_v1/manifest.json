@@ -1,0 +1,16 @@
+{
+  "version": "tickets-expanded-1",
+  "seed": 2026110202,
+  "synthetic": true,
+  "splits": {
+    "dev": {
+      "count": 24,
+      "sha256": "49924257117182746495940e4d3a10bc2ff0c9dc8eadf1cc895f9a6e68f9850c"
+    },
+    "test": {
+      "count": 120,
+      "sha256": "4d30c015e8a9bf65c9f7f685d3fd6e36e10da2cc017b4ad23eaf1fda9eb8cc73"
+    }
+  },
+  "limitation": "Controlled synthetic business rules. No independent human annotation, real customer logs or unseen-domain generalization."
+}

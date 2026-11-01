@@ -1,0 +1,183 @@
+{
+  "kind": "same_prompt_architecture_ablation",
+  "config_hash": "4e3e797f818265da75c0b7f1f328ca8c0a24c8a8e6e29c96d81b26302b96fbab",
+  "metrics": {
+    "plain": {
+      "mode": "live",
+      "usage_missing": 0,
+      "batch_report": null,
+      "n": 120,
+      "unique_tasks": 120,
+      "successes": 106,
+      "success_rate": 0.8833333333333333,
+      "success_wilson95": [
+        0.8136649880680831,
+        0.9292194707890375
+      ],
+      "tool_trace_rate": 0.8916666666666667,
+      "mean_tool_calls": 4.008333333333334,
+      "mean_latency_ms": 4120.060175,
+      "model_failures": {},
+      "execution_errors": 0,
+      "cache_hits": 0,
+      "episode_tokens": 561057,
+      "mean_tokens": 4675.475,
+      "uncached_episode_tokens": 561057,
+      "invalid_calls": 0,
+      "redundant_writes": 1,
+      "family_success": {
+        "already_done": 0.9,
+        "boundary": 0.8,
+        "combined": 1.0,
+        "missing": 0.9,
+        "missing_customer": 1.0,
+        "policy_exception": 1.0,
+        "retry": 0.9,
+        "routing": 0.9,
+        "sla": 1.0,
+        "standard": 0.9,
+        "transient_read": 0.3,
+        "vip": 1.0
+      },
+      "requests": 481,
+      "gateway_audit": {}
+    },
+    "guard_only": {
+      "mode": "live",
+      "usage_missing": 0,
+      "batch_report": null,
+      "n": 120,
+      "unique_tasks": 120,
+      "successes": 114,
+      "success_rate": 0.95,
+      "success_wilson95": [
+        0.8951958053541377,
+        0.9768859506955258
+      ],
+      "tool_trace_rate": 1.0,
+      "mean_tool_calls": 3.975,
+      "mean_latency_ms": 4161.284083333333,
+      "model_failures": {
+        "execution_contract_rejected": 6
+      },
+      "execution_errors": 6,
+      "cache_hits": 0,
+      "episode_tokens": 577152,
+      "mean_tokens": 4809.6,
+      "uncached_episode_tokens": 577152,
+      "invalid_calls": 0,
+      "redundant_writes": 0,
+      "family_success": {
+        "already_done": 1.0,
+        "boundary": 1.0,
+        "combined": 0.8,
+        "missing": 0.7,
+        "missing_customer": 1.0,
+        "policy_exception": 1.0,
+        "retry": 1.0,
+        "routing": 0.9,
+        "sla": 1.0,
+        "standard": 1.0,
+        "transient_read": 1.0,
+        "vip": 1.0
+      },
+      "requests": 491,
+      "gateway_audit": {
+        "blocked_tool_attempts": 13,
+        "skipped_write_attempts": 0,
+        "terminal_rejected_proposals": 6,
+        "terminal_repair_episodes": 0,
+        "episodes_with_intervention": 13,
+        "successful_intervention_episodes": 13
+      }
+    },
+    "guard_repair": {
+      "mode": "live",
+      "usage_missing": 1,
+      "batch_report": null,
+      "n": 120,
+      "unique_tasks": 120,
+      "successes": 120,
+      "success_rate": 1.0,
+      "success_wilson95": [
+        0.9689797289440706,
+        1.0
+      ],
+      "tool_trace_rate": 1.0,
+      "mean_tool_calls": 4,
+      "mean_latency_ms": 4517.506316666667,
+      "model_failures": {},
+      "execution_errors": 0,
+      "cache_hits": 0,
+      "episode_tokens": 582240,
+      "mean_tokens": 4852,
+      "uncached_episode_tokens": 582240,
+      "invalid_calls": 0,
+      "redundant_writes": 0,
+      "family_success": {
+        "already_done": 1.0,
+        "boundary": 1.0,
+        "combined": 1.0,
+        "missing": 1.0,
+        "missing_customer": 1.0,
+        "policy_exception": 1.0,
+        "retry": 1.0,
+        "routing": 1.0,
+        "sla": 1.0,
+        "standard": 1.0,
+        "transient_read": 1.0,
+        "vip": 1.0
+      },
+      "requests": 494,
+      "gateway_audit": {
+        "blocked_tool_attempts": 11,
+        "skipped_write_attempts": 0,
+        "terminal_rejected_proposals": 4,
+        "terminal_repair_episodes": 4,
+        "episodes_with_intervention": 15,
+        "successful_intervention_episodes": 15
+      }
+    }
+  },
+  "primary_guard_repair_vs_plain": {
+    "b_minus_a_delta_pp": 11.666666666666666,
+    "stratified_task_bootstrap95_delta_pp": [
+      7.5,
+      16.666666666666664
+    ],
+    "b_improved_tasks": 14,
+    "b_regressed_tasks": 0,
+    "exact_mcnemar_p": 0.0001220703125
+  },
+  "secondary_repair_vs_guard_only": {
+    "b_minus_a_delta_pp": 5.0,
+    "stratified_task_bootstrap95_delta_pp": [
+      1.6666666666666667,
+      8.333333333333332
+    ],
+    "b_improved_tasks": 6,
+    "b_regressed_tasks": 0,
+    "exact_mcnemar_p": 0.03125
+  },
+  "request_overhead_pct": 2.7027027027026973,
+  "token_overhead_pct": 3.775552216619693,
+  "budget": {
+    "requests": 1466,
+    "reserved_tokens": 7055229,
+    "reported_tokens": 1720449,
+    "missing_usage": 1,
+    "by_role": {
+      "actor": {
+        "requests": 1466,
+        "reported_tokens": 1720449
+      }
+    },
+    "limits": {
+      "requests": 1800,
+      "estimated_reserved_tokens": 12000000
+    },
+    "note": "Request cap is hard. Token reservation uses serialized UTF-8 bytes plus output cap, not a billing guarantee. Failed requests may have unknown charges."
+  },
+  "elapsed_this_invocation_seconds": 1546.5190530419932,
+  "limitation": "120 synthetic tasks; one run per arm. Local synchronous state only; no external exactly-once or arbitrary-policy understanding claim. Secondary comparison exploratory."
+}

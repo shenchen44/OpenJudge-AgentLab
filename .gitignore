@@ -1,0 +1,30 @@
+# Local credentials and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Environments, caches and local execution ledgers
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+runs/
+*.sqlite*
+*.log
+.DS_Store
+
+# Pinned third-party checkout is fetched by setup, never nested in this repo
+upstream/
+
+# Legacy backups stay local; published frozen experiment source is reproducibility evidence
+/archive/*
+!/archive/gateway-ablation-v1-source/
+!/archive/expanded-fixed-v1-source/
+/data/
